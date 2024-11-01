@@ -61,9 +61,9 @@ public class Main {
         int tries = 0;
         ArrayList<Character> usedLetters = new ArrayList<>();
         String randomWord = arrayOfWords[(int) (Math.random() * arrayOfWords.length)]; // Берем рандомное слово из массива
-        StringBuilder changedWord = new StringBuilder(randomWord.replaceAll(".", "*")); // Меняем все буквы в слове на символ '*'
+        StringBuilder maskedWord = new StringBuilder(randomWord.replaceAll(".", "*")); // Меняем все буквы в слове на символ '*'
         randomWord = randomWord.toUpperCase(); //Поднимаем все буквы в слове в верхний регистр
-        System.out.println(changedWord);
+        System.out.println(maskedWord);
         char inputLetter;
         while (tries < LIFES_COUNT) {
             if (!usedLetters.isEmpty()) {
@@ -82,11 +82,11 @@ public class Main {
             if (randomWord.contains(String.valueOf(inputLetter))) {
                 for (int i = 0; i < randomWord.length(); i++) {
                     if (randomWord.charAt(i) == inputLetter) {
-                        changedWord.setCharAt(i, inputLetter);
+                        maskedWord.setCharAt(i, inputLetter);
                     }
                 }
-                if (!String.valueOf(changedWord).contains("*")) {
-                    System.out.println("Поздравляю, Вы отгадали слово " + changedWord);
+                if (!String.valueOf(maskedWord).contains("*")) {
+                    System.out.println("Поздравляю, Вы отгадали слово " + maskedWord);
                     questionToPlayer();
                     break;
                 }
@@ -103,7 +103,7 @@ public class Main {
 
             }
             usedLetters.add(inputLetter);
-            System.out.println(changedWord);
+            System.out.println(maskedWord);
             System.out.println();
 
         }
